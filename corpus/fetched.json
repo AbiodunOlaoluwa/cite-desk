@@ -1,0 +1,68 @@
+{
+  "ca-casl": {
+    "bytes": 166215,
+    "retrieved": "2026-10-19",
+    "sha256": "2c001e6e198c88e80e3ae62ae486bc7f94683152e2605a8877d8a019b1af2c87",
+    "url": "https://laws-lois.justice.gc.ca/eng/XML/E-1.6.xml"
+  },
+  "eu-eprivacy": {
+    "bytes": 70945,
+    "retrieved": "2026-10-19",
+    "sha256": "a6278d9ddd78796710e9f0376b437976f71658dfedc618c379210bdb1f255615",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02002L0058-20091219"
+  },
+  "eu-gdpr": {
+    "bytes": 806864,
+    "retrieved": "2026-10-19",
+    "sha256": "962539af03738bf552319ff4ce42d69e5f95a576307c4dfed7bf87e81b646b9d",
+    "url": "https://publications.europa.eu/resource/celex/32016R0679"
+  },
+  "lagos-tenancy-law": {
+    "bytes": 186497,
+    "retrieved": "2026-10-19",
+    "sha256": "73a3bad534690771e545b89ba7d78252f51734b4fc08bb6438d45cf77c48ccd7",
+    "url": "https://lagosministryofjustice.org/wp-content/uploads/2022/01/Tenancy-Law-2011.pdf"
+  },
+  "ng-ndpc-gaid": {
+    "bytes": 1830615,
+    "retrieved": "2026-10-19",
+    "sha256": "e4359e90c9a11cd772f9605c797d6f36af000c58a27bfba251fa37a89824cc5a",
+    "url": "https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf"
+  },
+  "uk-pecr": {
+    "bytes": 677816,
+    "retrieved": "2026-10-19",
+    "sha256": "d2a586b0cf88e54692877c492c6bbd51f7389d7b1c2ff58a79593aa5b05b33dd",
+    "url": "https://www.legislation.gov.uk/uksi/2003/2426/data.xml"
+  },
+  "us-canspam-act": {
+    "bytes": 92866,
+    "retrieved": "2026-10-19",
+    "sha256": "cbe12a40f4b3d920419c9690921eb61989670be3823d311cfe06c1aa9b60e170",
+    "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap103.htm"
+  },
+  "us-canspam-rule": {
+    "bytes": 13487,
+    "retrieved": "2026-10-19",
+    "sha256": "45bf26b68a06dc81f55388a06eb4e376ceb061a490e3858fb6105143d1d583b0",
+    "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-10-16/title-16.xml?part=316"
+  },
+  "us-ftc-canspam-guide": {
+    "bytes": 1005522,
+    "retrieved": "2026-10-19",
+    "sha256": "83587dfb25db80ad0ee58fa4db2fe6564972b4b482aff8b711e574c3318ed467",
+    "url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"
+  },
+  "us-tcpa": {
+    "bytes": 89707,
+    "retrieved": "2026-10-19",
+    "sha256": "e96c02a3ba56284aa1f96ed1979afc60ebf41c56f228226852613c85a0455cac",
+    "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title47/html/USCODE-2024-title47-chap5-subchapII-partI-sec227.htm"
+  },
+  "us-tcpa-rules": {
+    "bytes": 68483,
+    "retrieved": "2026-10-19",
+    "sha256": "4e76b5069cd922d9e85ee7a7666e989066cf0394197ce1616dffc76ad3df9d86",
+    "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-10-16/title-47.xml?part=64&section=64.1200"
+  }
+}

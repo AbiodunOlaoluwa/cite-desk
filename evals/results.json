@@ -1,0 +1,3689 @@
+{
+  "embed_model": "BAAI/bge-small-en-v1.5",
+  "rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2",
+  "collections": [
+    {
+      "collection": "outreach",
+      "questions": 68,
+      "answerable": 56,
+      "unanswerable": 12,
+      "variants": [
+        {
+          "key": "bm25",
+          "label": "Keyword only (BM25)",
+          "recall@1": 0.25,
+          "recall@3": 0.482,
+          "recall@5": 0.607,
+          "mrr@10": 0.39,
+          "missed": 19,
+          "p50_ms": 0.7,
+          "p95_ms": 2.0
+        },
+        {
+          "key": "dense",
+          "label": "Meaning only (embeddings)",
+          "recall@1": 0.5,
+          "recall@3": 0.732,
+          "recall@5": 0.786,
+          "mrr@10": 0.624,
+          "missed": 6,
+          "p50_ms": 16.2,
+          "p95_ms": 24.8
+        },
+        {
+          "key": "hybrid",
+          "label": "Hybrid (BM25 + embeddings, fused)",
+          "recall@1": 0.482,
+          "recall@3": 0.643,
+          "recall@5": 0.786,
+          "mrr@10": 0.592,
+          "missed": 9,
+          "p50_ms": 21.8,
+          "p95_ms": 37.1
+        },
+        {
+          "key": "rerank",
+          "label": "Hybrid + re-rank",
+          "recall@1": 0.554,
+          "recall@3": 0.786,
+          "recall@5": 0.857,
+          "mrr@10": 0.67,
+          "missed": 4,
+          "p50_ms": 276.8,
+          "p95_ms": 1369.3,
+          "refusal_auc": 0.786,
+          "refusal": {
+            "refuse_below": -7.513,
+            "weak_below": -1.902,
+            "test_kept_answerable": 0.929,
+            "test_refused_unanswerable": 0.667,
+            "test_strong_answerable": 0.75,
+            "test_flagged_unanswerable": 0.667
+          }
+        },
+        {
+          "key": "rerank_filter",
+          "label": "Hybrid + re-rank + jurisdiction filter",
+          "recall@1": 0.643,
+          "recall@3": 0.821,
+          "recall@5": 0.893,
+          "mrr@10": 0.735,
+          "missed": 4,
+          "p50_ms": 282.2,
+          "p95_ms": 372.1,
+          "refusal_auc": 0.76,
+          "refusal": {
+            "refuse_below": -10.48,
+            "weak_below": -2.056,
+            "test_kept_answerable": 0.964,
+            "test_refused_unanswerable": 0.333,
+            "test_strong_answerable": 0.75,
+            "test_flagged_unanswerable": 0.667
+          }
+        }
+      ],
+      "per_question": {
+        "o01": {
+          "q": "Do I need to include a physical address in a cold sales email to US prospects?",
+          "gold": [
+            "us-canspam-act/7704#(a)(5)",
+            "us-ftc-canspam-guide/tell-recipients-where-you-re-located"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 4,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "PECR reg. 23(a)\u2013(d)"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "15 U.S.C. \u00a7 7704(a)",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "15 U.S.C. \u00a7 7704(a)",
+              "FTC guide"
+            ]
+          }
+        },
+        "o02": {
+          "q": "How many days do I have to stop emailing someone after they unsubscribe in the US?",
+          "gold": [
+            "us-canspam-act/7704#(a)(4)",
+            "us-ftc-canspam-guide/honor-opt-out-requests-promptly"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 4,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "47 CFR \u00a7 64.1200(a)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 3,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 11(4)\u2013(5)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 3,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 11(4)\u2013(5)",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 2,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "FTC guide",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(a)",
+              "15 U.S.C. \u00a7 7704(a)"
+            ]
+          }
+        },
+        "o03": {
+          "q": "How long does the unsubscribe link in my marketing email have to keep working after I send it?",
+          "gold": [
+            "us-canspam-act/7704#(a)(3)",
+            "us-ftc-canspam-guide/honor-opt-out-requests-promptly",
+            "us-ftc-canspam-guide/tell-recipients-how-to-opt-out-of-receiving-future-marketing"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 8,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "CASL s. 11(1)\u2013(3)"
+            ]
+          },
+          "dense": {
+            "rank": 3,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 4,
+            "top": [
+              "FTC guide",
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 3,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o04": {
+          "q": "Can I make people pay or log in before they can opt out of my emails?",
+          "gold": [
+            "us-canspam-rule/316.5",
+            "us-ftc-canspam-guide/honor-opt-out-requests-promptly"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "16 CFR \u00a7 316.5(a)\u2013(b)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "16 CFR \u00a7 316.5(a)\u2013(b)"
+            ]
+          }
+        },
+        "o05": {
+          "q": "Is it legal to write a clickbait subject line that doesn't match what's inside the email?",
+          "gold": [
+            "us-canspam-act/7704#(a)(2)",
+            "us-ftc-canspam-guide/don-t-use-deceptive-subject-lines"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "15 U.S.C. \u00a7 7704(a)"
+            ]
+          },
+          "hybrid": {
+            "rank": 8,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o06": {
+          "q": "Does CAN-SPAM only cover bulk email blasts, or one-to-one sales emails too?",
+          "gold": [
+            "us-ftc-canspam-guide/overview"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "15 U.S.C. \u00a7 7703(c)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "15 U.S.C. \u00a7 7703(c)"
+            ]
+          }
+        },
+        "o07": {
+          "q": "If an agency sends cold emails for my company, who is responsible if they break the rules?",
+          "gold": [
+            "us-ftc-canspam-guide/monitor-what-others-are-doing-on-your-behalf",
+            "us-canspam-act/7705"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o08": {
+          "q": "What counts as a transactional or relationship email that is exempt from most CAN-SPAM rules?",
+          "gold": [
+            "us-canspam-act/7702",
+            "us-ftc-canspam-guide/how-do-i-know-if-what-i-m-sending-is-a-transactional-or-rela",
+            "us-canspam-rule/316.2"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "16 CFR \u00a7 316.3(c)",
+              "15 U.S.C. \u00a7 7702(17)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "16 CFR \u00a7 316.3(c)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 3,
+            "top": [
+              "16 CFR \u00a7 316.3(c)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o09": {
+          "q": "My email has a receipt and a promotion in it. How do I tell whether it counts as commercial?",
+          "gold": [
+            "us-canspam-rule/316.3",
+            "us-ftc-canspam-guide/what-if-the-message-combines-commercial-content-and-transact"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 8,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "15 U.S.C. \u00a7 7705(a)\u2013(b)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "16 CFR \u00a7 316.3(a)\u2013(c)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "16 CFR \u00a7 316.3(a)\u2013(c)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o10": {
+          "q": "How much can the FTC fine for each email that breaks CAN-SPAM?",
+          "gold": [
+            "us-ftc-canspam-guide/what-are-the-penalties-for-violating-the-can-spam-act",
+            "us-ftc-canspam-guide/overview"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "16 CFR \u00a7 316.1"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o11": {
+          "q": "Is it allowed to collect email addresses from websites with a scraper and then send them marketing?",
+          "gold": [
+            "us-canspam-act/7704#(b)"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "15 U.S.C. \u00a7 7704(b)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 9,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 8,
+            "top": [
+              "PECR reg. 23(a)\u2013(d)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 8,
+            "top": [
+              "PECR reg. 23(a)\u2013(d)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o12": {
+          "q": "Can an internet service provider sue a company over spam in the US?",
+          "gold": [
+            "us-canspam-act/7706#(g)"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "GAID 2025, Schedule 7(4)",
+              "15 U.S.C. \u00a7 7706(f)\u2013(g)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "15 U.S.C. \u00a7 7705(a)\u2013(b)",
+              "15 U.S.C. \u00a7 7701(a)"
+            ]
+          },
+          "hybrid": {
+            "rank": 5,
+            "top": [
+              "FTC guide",
+              "15 U.S.C. \u00a7 7701(a)",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "15 U.S.C. \u00a7 7706(f)\u2013(g)",
+              "15 U.S.C. \u00a7 7706(g)",
+              "15 U.S.C. \u00a7 7707(a)\u2013(c)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "15 U.S.C. \u00a7 7706(f)\u2013(g)",
+              "15 U.S.C. \u00a7 7706(g)",
+              "15 U.S.C. \u00a7 7707(a)\u2013(c)"
+            ]
+          }
+        },
+        "o13": {
+          "q": "Do individual US states still have their own anti-spam email laws on top of CAN-SPAM?",
+          "gold": [
+            "us-canspam-act/7707#(b)"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "15 U.S.C. \u00a7 7707(a)\u2013(c)",
+              "16 CFR \u00a7 316.1"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 4,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "15 U.S.C. \u00a7 7701(a)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 4,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "15 U.S.C. \u00a7 7701(a)"
+            ]
+          }
+        },
+        "o14": {
+          "q": "What label has to go in the subject line of a sexually explicit marketing email?",
+          "gold": [
+            "us-canspam-rule/316.4",
+            "us-ftc-canspam-guide/are-there-separate-rules-that-apply-to-sexually-explicit-mar"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "16 CFR \u00a7 316.4(a)",
+              "16 CFR \u00a7 316.4(a)\u2013(b)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "16 CFR \u00a7 316.4(a)",
+              "FTC guide",
+              "16 CFR \u00a7 316.4(a)\u2013(b)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "16 CFR \u00a7 316.4(a)",
+              "16 CFR \u00a7 316.4(a)\u2013(b)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "FTC guide",
+              "16 CFR \u00a7 316.4(a)",
+              "16 CFR \u00a7 316.4(a)\u2013(b)"
+            ]
+          }
+        },
+        "o15": {
+          "q": "Are marketing messages sent straight to mobile phones handled differently under CAN-SPAM?",
+          "gold": [
+            "us-canspam-act/7712"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 5,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 6(5)\u2013(6)"
+            ]
+          },
+          "dense": {
+            "rank": 4,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "15 U.S.C. \u00a7 7712(b)\u2013(d)",
+              "15 U.S.C. \u00a7 7712(a)\u2013(b)",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 4,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 4,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          }
+        },
+        "o16": {
+          "q": "What hours am I allowed to make telemarketing calls to US homes?",
+          "gold": [
+            "us-tcpa-rules/64.1200#(c)(1)"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(b)",
+              "47 U.S.C. \u00a7 227(a)\u2013(b)"
+            ]
+          },
+          "dense": {
+            "rank": null,
+            "top": [
+              "47 CFR \u00a7 64.1200(d)",
+              "47 CFR \u00a7 64.1200(d)",
+              "47 U.S.C. \u00a7 227(a)\u2013(b)"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(a)\u2013(b)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)\u2013(c)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(a)\u2013(b)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)\u2013(c)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(a)\u2013(b)"
+            ]
+          }
+        },
+        "o17": {
+          "q": "Can I use a prerecorded voice to call someone's cell phone with a sales message if they never agreed to it?",
+          "gold": [
+            "us-tcpa/227#(b)(1)",
+            "us-tcpa-rules/64.1200#(a)(2)",
+            "us-tcpa-rules/64.1200#(a)(1)"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 4,
+            "top": [
+              "47 CFR \u00a7 64.1200(f)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(d)"
+            ]
+          },
+          "dense": {
+            "rank": 8,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)\u2013(c)",
+              "47 CFR \u00a7 64.1200(d)",
+              "PECR reg. 21(A1)\u2013(6)"
+            ]
+          },
+          "hybrid": {
+            "rank": 4,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)\u2013(c)",
+              "47 CFR \u00a7 64.1200(f)",
+              "47 U.S.C. \u00a7 227(d)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "47 U.S.C. \u00a7 227(b)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(b)\u2013(c)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "47 U.S.C. \u00a7 227(b)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(b)\u2013(c)"
+            ]
+          }
+        },
+        "o18": {
+          "q": "How long do I have to keep honouring someone's request not to be called by my sales team?",
+          "gold": [
+            "us-tcpa-rules/64.1200#(d)(6)",
+            "us-tcpa-rules/64.1200#(d)(3)"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(d)",
+              "GDPR Recital 49"
+            ]
+          },
+          "dense": {
+            "rank": 3,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(d)"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(d)",
+              "PECR reg. 26(1)\u2013(3)"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(d)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(d)"
+            ]
+          }
+        },
+        "o19": {
+          "q": "What can a consumer recover in court for an illegal robocall?",
+          "gold": [
+            "us-tcpa/227#(b)(3)"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 4,
+            "top": [
+              "47 CFR \u00a7 64.1200(k)\u2013(l)",
+              "47 CFR \u00a7 64.1200(k)",
+              "47 U.S.C. \u00a7 227(g)"
+            ]
+          },
+          "dense": {
+            "rank": 4,
+            "top": [
+              "47 CFR \u00a7 64.1200(c)\u2013(d)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(i)\u2013(j)"
+            ]
+          },
+          "hybrid": {
+            "rank": 4,
+            "top": [
+              "47 CFR \u00a7 64.1200(k)\u2013(l)",
+              "47 CFR \u00a7 64.1200(k)",
+              "47 U.S.C. \u00a7 227(i)\u2013(j)"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)\u2013(b)",
+              "47 CFR \u00a7 64.1200(k)\u2013(l)",
+              "47 U.S.C. \u00a7 227(b)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 3,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)\u2013(b)",
+              "47 CFR \u00a7 64.1200(k)\u2013(l)",
+              "47 U.S.C. \u00a7 227(b)"
+            ]
+          }
+        },
+        "o20": {
+          "q": "Do I have to check my call list against the national Do Not Call registry?",
+          "gold": [
+            "us-tcpa-rules/64.1200#(c)(2)"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(c)",
+              "47 CFR \u00a7 64.1200(g)\u2013(k)",
+              "15 U.S.C. \u00a7 7708(a)\u2013(b)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(c)",
+              "47 CFR \u00a7 64.1200(o)\u2013(p)",
+              "PECR reg. 21(A1)\u2013(6)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(c)",
+              "47 CFR \u00a7 64.1200(g)\u2013(k)",
+              "PECR reg. 21(A1)\u2013(6)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(c)",
+              "47 CFR \u00a7 64.1200(c)\u2013(d)",
+              "15 U.S.C. \u00a7 7708(a)\u2013(b)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(c)",
+              "47 CFR \u00a7 64.1200(c)\u2013(d)",
+              "15 U.S.C. \u00a7 7708(a)\u2013(b)"
+            ]
+          }
+        },
+        "o21": {
+          "q": "Am I allowed to send unsolicited advertisements by fax?",
+          "gold": [
+            "us-tcpa/227#(b)(1)",
+            "us-tcpa-rules/64.1200#(a)(4)"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "47 U.S.C. \u00a7 227(b)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(b)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "CASL s. 6(6)\u2013(8)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(b)",
+              "47 U.S.C. \u00a7 227(b)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(b)",
+              "47 U.S.C. \u00a7 227(b)"
+            ]
+          }
+        },
+        "o22": {
+          "q": "What does a prerecorded telemarketing message have to say at the start of the call?",
+          "gold": [
+            "us-tcpa-rules/64.1200#(b)"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(f)",
+              "47 U.S.C. \u00a7 227(d)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)",
+              "47 CFR \u00a7 64.1200(b)\u2013(c)",
+              "47 U.S.C. \u00a7 227(e)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(d)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(d)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(d)"
+            ]
+          }
+        },
+        "o23": {
+          "q": "What exactly counts as prior express written consent for robocalls?",
+          "gold": [
+            "us-tcpa-rules/64.1200#(f)(9)"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)",
+              "GDPR Art. 7(1)\u2013(4)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(f)",
+              "47 CFR \u00a7 64.1200(m)\u2013(n)",
+              "CASL s. 10(1)\u2013(3)"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(f)",
+              "CASL s. 10(1)\u2013(3)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(f)",
+              "47 CFR \u00a7 64.1200(a)",
+              "CASL s. 10(5)\u2013(8)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(f)",
+              "47 CFR \u00a7 64.1200(a)",
+              "CASL s. 10(5)\u2013(8)"
+            ]
+          }
+        },
+        "o24": {
+          "q": "Is there a limit on how many calls a predictive dialer can drop?",
+          "gold": [
+            "us-tcpa-rules/64.1200#(a)(7)"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 5,
+            "top": [
+              "15 U.S.C. \u00a7 7701(a)",
+              "47 U.S.C. \u00a7 227(b)",
+              "GAID 2025, Schedule 4"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)",
+              "PECR reg. 20(1)\u2013(7)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(b)"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(b)",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 3,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 U.S.C. \u00a7 227(b)",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          }
+        },
+        "o25": {
+          "q": "How can a person withdraw their consent to receive robocalls or texts?",
+          "gold": [
+            "us-tcpa-rules/64.1200#(a)(10)"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)\u2013(b)",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)\u2013(b)",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)\u2013(b)",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)\u2013(b)",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)\u2013(b)",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          }
+        },
+        "o26": {
+          "q": "Can legitimate interest be a lawful basis for direct marketing under the GDPR?",
+          "gold": [
+            "eu-gdpr/rct-47",
+            "eu-gdpr/art-6"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "GDPR Recital 47",
+              "GAID 2025, Art. 26(1)\u2013(2)",
+              "GAID 2025, Schedule 2"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "GDPR Recital 47",
+              "GAID 2025, Art. 26(1)\u2013(2)",
+              "GDPR Recital 69"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "GDPR Recital 47",
+              "GAID 2025, Art. 26(1)\u2013(2)",
+              "ePrivacy Directive Art. 13(4)\u2013(6)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "GDPR Recital 47",
+              "GDPR Art. 21(1)\u2013(5)",
+              "GDPR Recital 69"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GDPR Recital 47",
+              "GDPR Art. 21(1)\u2013(5)",
+              "GDPR Recital 69"
+            ]
+          }
+        },
+        "o27": {
+          "q": "Can someone in the EU tell me to stop using their data for marketing, and do I have to listen?",
+          "gold": [
+            "eu-gdpr/art-21"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "GAID 2025, Schedule 8",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 3,
+            "top": [
+              "GDPR Recital 70",
+              "GDPR Recital 107",
+              "GDPR Art. 21(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 21(1)\u2013(5)",
+              "GAID 2025, Schedule 8",
+              "GDPR Recital 70"
+            ]
+          },
+          "rerank": {
+            "rank": 2,
+            "top": [
+              "GDPR Recital 70",
+              "GDPR Art. 21(1)\u2013(5)",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 2,
+            "top": [
+              "GDPR Recital 70",
+              "GDPR Art. 21(1)\u2013(5)",
+              "GDPR Recital 38"
+            ]
+          }
+        },
+        "o28": {
+          "q": "Under EU rules, can I email my existing customers about similar products without asking for consent again?",
+          "gold": [
+            "eu-eprivacy/art-13"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "15 U.S.C. \u00a7 7705(a)\u2013(b)",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "GDPR Recital 32",
+              "GDPR Recital 43"
+            ]
+          }
+        },
+        "o29": {
+          "q": "What makes consent valid under the GDPR?",
+          "gold": [
+            "eu-gdpr/art-7",
+            "eu-gdpr/art-4",
+            "eu-gdpr/rct-32"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "GDPR Art. 8(1)\u2013(3)",
+              "GDPR Recital 43",
+              "47 CFR \u00a7 64.1200(g)\u2013(k)"
+            ]
+          },
+          "dense": {
+            "rank": 3,
+            "top": [
+              "GDPR Recital 43",
+              "GDPR Recital 42",
+              "GDPR Art. 7(1)\u2013(4)"
+            ]
+          },
+          "hybrid": {
+            "rank": 3,
+            "top": [
+              "GDPR Recital 43",
+              "GDPR Art. 8(1)\u2013(3)",
+              "GDPR Art. 7(1)\u2013(4)"
+            ]
+          },
+          "rerank": {
+            "rank": 2,
+            "top": [
+              "GDPR Recital 43",
+              "GDPR Recital 32",
+              "GDPR Art. 7(1)\u2013(4)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 2,
+            "top": [
+              "GDPR Recital 43",
+              "GDPR Recital 32",
+              "GDPR Art. 7(1)\u2013(4)"
+            ]
+          }
+        },
+        "o30": {
+          "q": "I bought a list of EU leads from a data provider. What do I have to tell those people?",
+          "gold": [
+            "eu-gdpr/art-14"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "GAID 2025, Schedule 8",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 9,
+            "top": [
+              "GDPR Recital 31",
+              "GDPR Recital 23",
+              "GDPR Art. 49(1)\u2013(2)"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Schedule 8",
+              "GDPR Art. 60(10)\u2013(12)",
+              "GDPR Recital 31"
+            ]
+          },
+          "rerank": {
+            "rank": 8,
+            "top": [
+              "GDPR Recital 31",
+              "GDPR Recital 128",
+              "GDPR Art. 60(10)\u2013(12)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": null,
+            "top": [
+              "GDPR Recital 31",
+              "GDPR Recital 131",
+              "GDPR Recital 127"
+            ]
+          }
+        },
+        "o31": {
+          "q": "How fast do I have to report a data breach to the regulator in the EU?",
+          "gold": [
+            "eu-gdpr/art-33"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 5,
+            "top": [
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Art. 13(1)\u2013(5)",
+              "GDPR Art. 71(1)\u2013(2)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 33(1)\u2013(5)",
+              "GDPR Recital 87",
+              "GDPR Recital 85"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 33(1)\u2013(5)",
+              "GDPR Art. 97(1)\u2013(5)",
+              "GDPR Art. 71(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 33(1)\u2013(5)",
+              "GDPR Recital 85",
+              "GDPR Recital 87"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 33(1)\u2013(5)",
+              "GDPR Recital 85",
+              "GDPR Recital 86"
+            ]
+          }
+        },
+        "o32": {
+          "q": "What is the biggest fine a company can get under the GDPR?",
+          "gold": [
+            "eu-gdpr/art-83"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "GDPR Recital 151",
+              "GDPR Art. 83(8)\u2013(9)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 83(5)\u2013(7)",
+              "GDPR Art. 47(2)",
+              "GDPR Art. 47(1)\u2013(2)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 83(5)\u2013(7)",
+              "GDPR Art. 83(1)\u2013(2)",
+              "GDPR Art. 84(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 83(5)\u2013(7)",
+              "GDPR Art. 83(2)\u2013(4)",
+              "GDPR Recital 150"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 83(5)\u2013(7)",
+              "GDPR Art. 83(2)\u2013(4)",
+              "GDPR Recital 150"
+            ]
+          }
+        },
+        "o33": {
+          "q": "Does the GDPR apply to a US startup selling to customers in Germany?",
+          "gold": [
+            "eu-gdpr/art-3"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "ePrivacy Directive Art. 6(5)\u2013(6)",
+              "47 CFR \u00a7 64.1200(n)",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          },
+          "dense": {
+            "rank": 7,
+            "top": [
+              "GDPR Recital 23",
+              "GDPR Recital 13",
+              "GDPR Art. 48"
+            ]
+          },
+          "hybrid": {
+            "rank": 4,
+            "top": [
+              "GDPR Recital 23",
+              "GDPR Art. 88(1)\u2013(3)",
+              "GDPR Recital 25"
+            ]
+          },
+          "rerank": {
+            "rank": 4,
+            "top": [
+              "GDPR Recital 25",
+              "GDPR Recital 18",
+              "GDPR Recital 16"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 5,
+            "top": [
+              "GDPR Recital 25",
+              "GDPR Recital 18",
+              "GDPR Recital 16"
+            ]
+          }
+        },
+        "o34": {
+          "q": "When does a company have to appoint a data protection officer under EU rules?",
+          "gold": [
+            "eu-gdpr/art-37"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 3,
+            "top": [
+              "GDPR Art. 54(1)\u2013(2)",
+              "GDPR Art. 53(1)\u2013(4)",
+              "GDPR Art. 37(1)\u2013(4)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 37(5)\u2013(7)",
+              "GDPR Art. 38(1)\u2013(6)",
+              "GDPR Art. 39(1)\u2013(2)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 37(1)\u2013(4)",
+              "GDPR Art. 68(1)\u2013(6)",
+              "GDPR Art. 37(5)\u2013(7)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 37(1)\u2013(4)",
+              "GDPR Art. 53(1)\u2013(4)",
+              "GDPR Recital 121"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GDPR Art. 37(1)\u2013(4)",
+              "GDPR Art. 53(1)\u2013(4)",
+              "GDPR Recital 121"
+            ]
+          }
+        },
+        "o35": {
+          "q": "Can I hide who is really sending a marketing email in the EU?",
+          "gold": [
+            "eu-eprivacy/art-13"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 7,
+            "top": [
+              "15 U.S.C. \u00a7 7705(a)\u2013(b)",
+              "FTC guide",
+              "PECR reg. 23(a)\u2013(d)"
+            ]
+          },
+          "hybrid": {
+            "rank": 10,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "PECR reg. 23(a)\u2013(d)",
+              "FTC guide",
+              "ePrivacy Directive Art. 13(4)\u2013(6)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "ePrivacy Directive Art. 13(4)\u2013(6)",
+              "GDPR Recital 70",
+              "GDPR Art. 21(1)\u2013(5)"
+            ]
+          }
+        },
+        "o36": {
+          "q": "How long am I allowed to keep prospect data under the GDPR?",
+          "gold": [
+            "eu-gdpr/art-5"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "GDPR Recital 33",
+              "PECR reg. 28(1)\u2013(8)",
+              "PECR reg. 29(1)"
+            ]
+          },
+          "dense": {
+            "rank": null,
+            "top": [
+              "GDPR Recital 137",
+              "GDPR Recital 62",
+              "GDPR Recital 171"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "GDPR Recital 171",
+              "GAID 2025, Schedule 1",
+              "GDPR Recital 7"
+            ]
+          },
+          "rerank": {
+            "rank": null,
+            "top": [
+              "GDPR Recital 171",
+              "GDPR Recital 137",
+              "GDPR Recital 59"
+            ]
+          },
+          "rerank_filter": {
+            "rank": null,
+            "top": [
+              "GDPR Recital 171",
+              "GDPR Recital 137",
+              "GDPR Recital 85"
+            ]
+          }
+        },
+        "o37": {
+          "q": "Can I email a sales pitch to a sole trader in the UK without their consent?",
+          "gold": [
+            "uk-pecr/reg-22",
+            "uk-pecr/reg-2"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 2(1)",
+              "PECR reg. 32A(8)\u2013(9)",
+              "PECR reg. 22(1)\u2013(3A)"
+            ]
+          },
+          "dense": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(f)"
+            ]
+          },
+          "hybrid": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "PECR reg. 22(1)\u2013(3A)"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "PECR reg. 22(1)\u2013(3A)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 22(1)\u2013(3A)",
+              "PECR reg. 21B(1)\u2013(5)",
+              "PECR reg. 22(3A)\u2013(5)"
+            ]
+          }
+        },
+        "o38": {
+          "q": "Is cold emailing a UK limited company's staff address allowed?",
+          "gold": [
+            "uk-pecr/reg-22",
+            "uk-pecr/reg-23",
+            "uk-pecr/reg-2"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 3,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "PECR reg. 2(1)"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "PECR reg. 22(3A)\u2013(5)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 8,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 22(3A)\u2013(5)",
+              "PECR reg. 16A(1)\u2013(5)",
+              "PECR reg. 23(a)\u2013(d)"
+            ]
+          }
+        },
+        "o39": {
+          "q": "What is the soft opt-in in the UK?",
+          "gold": [
+            "uk-pecr/reg-22"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "PECR reg. 32A(8)\u2013(9)",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "PECR reg. 2(1)",
+              "PECR reg. 22(3A)\u2013(5)",
+              "PECR reg. 21B(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 5,
+            "top": [
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(a)",
+              "PECR reg. 2(1)"
+            ]
+          },
+          "rerank": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 7,
+            "top": [
+              "PECR reg. 16A(8)",
+              "PECR reg. 32A(8)\u2013(9)",
+              "PECR reg. 5C(7)\u2013(16)"
+            ]
+          }
+        },
+        "o40": {
+          "q": "Can a UK charity email supporters without consent?",
+          "gold": [
+            "uk-pecr/reg-22"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 22(1)\u2013(3A)",
+              "PECR reg. 32A(8)\u2013(9)",
+              "PECR reg. 22(3A)\u2013(5)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 22(3A)\u2013(5)",
+              "PECR reg. 22(1)\u2013(3A)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 22(1)\u2013(3A)",
+              "PECR reg. 22(3A)\u2013(5)",
+              "FTC guide"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 22(3A)\u2013(5)",
+              "PECR reg. 22(1)\u2013(3A)",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 22(3A)\u2013(5)",
+              "PECR reg. 22(1)\u2013(3A)",
+              "PECR reg. 21B(1)\u2013(5)"
+            ]
+          }
+        },
+        "o41": {
+          "q": "Can I make sales calls to UK numbers that are on the Telephone Preference Service?",
+          "gold": [
+            "uk-pecr/reg-21",
+            "uk-pecr/reg-26"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 7,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(g)\u2013(k)",
+              "PECR reg. 2(1)"
+            ]
+          },
+          "dense": {
+            "rank": 5,
+            "top": [
+              "47 CFR \u00a7 64.1200(b)\u2013(c)",
+              "47 CFR \u00a7 64.1200(d)",
+              "PECR reg. 21A(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 5,
+            "top": [
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(b)\u2013(c)",
+              "PECR reg. 2(1)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 21(A1)\u2013(6)",
+              "47 CFR \u00a7 64.1200(a)",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 21(A1)\u2013(6)",
+              "PECR reg. 16(1)\u2013(2)",
+              "PECR reg. 21B(1)\u2013(5)"
+            ]
+          }
+        },
+        "o42": {
+          "q": "Can I run automated dialler marketing calls in the UK?",
+          "gold": [
+            "uk-pecr/reg-19"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "PECR reg. 2(1)",
+              "PECR reg. 19(1)\u2013(4)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 19(1)\u2013(4)",
+              "PECR reg. 21A(1)\u2013(5)",
+              "PECR reg. 21B(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 19(1)\u2013(4)",
+              "PECR reg. 21B(1)\u2013(5)",
+              "PECR reg. 21A(1)\u2013(5)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 19(1)\u2013(4)",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "PECR reg. 24(1)\u2013(2)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 19(1)\u2013(4)",
+              "PECR reg. 24(1)\u2013(2)",
+              "PECR reg. 21B(1)\u2013(5)"
+            ]
+          }
+        },
+        "o43": {
+          "q": "Do I need consent for analytics cookies on a UK website?",
+          "gold": [
+            "uk-pecr/reg-6"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GAID 2025, Art. 7(i)\u2013(m)",
+              "PECR reg. 32A(8)\u2013(9)"
+            ]
+          },
+          "dense": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GDPR Recital 32",
+              "GAID 2025, Art. 17(7)\u2013(9)"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GAID 2025, Art. 17(7)\u2013(9)",
+              "GDPR Recital 32"
+            ]
+          },
+          "rerank": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GDPR Recital 32",
+              "GAID 2025, Art. 17(7)\u2013(9)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": null,
+            "top": [
+              "PECR reg. 14(1)\u2013(5)",
+              "PECR reg. 7(1)\u2013(4)",
+              "PECR reg. 22(1)\u2013(3A)"
+            ]
+          }
+        },
+        "o44": {
+          "q": "Can I cold call someone in the UK about their pension?",
+          "gold": [
+            "uk-pecr/reg-21B"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 21B(1)\u2013(5)",
+              "PECR reg. 21B(5)",
+              "PECR reg. 32A(8)\u2013(9)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 21B(1)\u2013(5)",
+              "PECR reg. 21B(5)",
+              "PECR reg. 21A(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 21B(1)\u2013(5)",
+              "PECR reg. 21B(5)",
+              "47 CFR \u00a7 64.1200(a)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 21B(1)\u2013(5)",
+              "PECR reg. 21B(5)",
+              "47 CFR \u00a7 64.1200(d)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "PECR reg. 21B(1)\u2013(5)",
+              "PECR reg. 21B(5)",
+              "PECR reg. 2(1)"
+            ]
+          }
+        },
+        "o45": {
+          "q": "What is the maximum penalty for sending spam in Canada?",
+          "gold": [
+            "ca-casl/s-20"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "CASL s. 20(4)\u2013(5)",
+              "CASL s. 12(1)\u2013(2)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "CASL s. 20(4)\u2013(5)",
+              "FTC guide",
+              "CASL s. 6(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "CASL s. 20(4)\u2013(5)",
+              "FTC guide",
+              "CASL s. 12(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "CASL s. 20(4)\u2013(5)",
+              "CASL s. 46(1)\u2013(2)",
+              "CASL s. 14"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "CASL s. 20(4)\u2013(5)",
+              "CASL s. 14",
+              "CASL s. 30"
+            ]
+          }
+        },
+        "o46": {
+          "q": "When can I rely on implied consent to send commercial emails in Canada?",
+          "gold": [
+            "ca-casl/s-10"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "CASL s. 10(8)\u2013(9)",
+              "CASL s. 6(1)\u2013(5)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "CASL s. 10(8)\u2013(9)",
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 6(6)\u2013(8)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "CASL s. 10(8)\u2013(9)",
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 11(4)\u2013(5)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "CASL s. 10(8)\u2013(9)",
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 11(1)\u2013(3)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "CASL s. 10(8)\u2013(9)",
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 11(1)\u2013(3)"
+            ]
+          }
+        },
+        "o47": {
+          "q": "What has to be in every commercial email I send to Canadians?",
+          "gold": [
+            "ca-casl/s-6",
+            "ca-casl/s-11"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "CASL s. 3(a)\u2013(d)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 1(2)\u2013(4)",
+              "CASL s. 1(1)"
+            ]
+          },
+          "hybrid": {
+            "rank": 5,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "CASL s. 3(a)\u2013(d)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 1(2)\u2013(4)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 1(2)\u2013(4)"
+            ]
+          }
+        },
+        "o48": {
+          "q": "How quickly must I process an unsubscribe request in Canada?",
+          "gold": [
+            "ca-casl/s-11"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "CASL s. 11(5)",
+              "CASL s. 11(4)\u2013(5)",
+              "GDPR Recital 100"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 11(4)\u2013(5)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "CASL s. 11(5)",
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 6(1)\u2013(5)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 11(5)",
+              "FTC guide"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 11(5)",
+              "CASL s. 16(1)\u2013(4)"
+            ]
+          }
+        },
+        "o49": {
+          "q": "Can I email a Canadian business contact whose address is listed on their company website?",
+          "gold": [
+            "ca-casl/s-10"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 10(10)\u2013(13)",
+              "FTC guide"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "FTC guide",
+              "CASL s. 11(1)\u2013(3)"
+            ]
+          },
+          "rerank": {
+            "rank": 3,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "FTC guide",
+              "CASL s. 10(8)\u2013(9)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 2,
+            "top": [
+              "CASL s. 11(1)\u2013(3)",
+              "CASL s. 10(8)\u2013(9)",
+              "CASL s. 6(1)\u2013(5)"
+            ]
+          }
+        },
+        "o50": {
+          "q": "Does Canada's anti-spam law apply to emails I send from Nigeria to people in Toronto?",
+          "gold": [
+            "ca-casl/s-12"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "FTC guide",
+              "CASL s. 12(1)\u2013(2)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 8,
+            "top": [
+              "CASL s. 6(1)\u2013(5)",
+              "FTC guide",
+              "CASL s. 11(1)\u2013(3)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "CASL s. 12(1)\u2013(2)",
+              "FTC guide",
+              "CASL s. 6(1)\u2013(5)"
+            ]
+          },
+          "rerank": {
+            "rank": 4,
+            "top": [
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 6(6)\u2013(8)",
+              "CASL s. 11(1)\u2013(3)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 5,
+            "top": [
+              "CASL s. 6(1)\u2013(5)",
+              "CASL s. 6(6)\u2013(8)",
+              "CASL s. 11(1)\u2013(3)"
+            ]
+          }
+        },
+        "o51": {
+          "q": "Do I need consent to send direct marketing messages in Nigeria?",
+          "gold": [
+            "ng-ndpc-gaid/art-18"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "FTC guide",
+              "PECR reg. 22(1)\u2013(3A)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": null,
+            "top": [
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "PECR reg. 22(1)\u2013(3A)",
+              "PECR reg. 21A(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "PECR reg. 22(1)\u2013(3A)",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "CASL s. 10(8)\u2013(9)"
+            ]
+          },
+          "rerank": {
+            "rank": 7,
+            "top": [
+              "FTC guide",
+              "ePrivacy Directive Art. 13(1)\u2013(3)",
+              "PECR reg. 22(1)\u2013(3A)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 18(1)\u2013(2)",
+              "GAID 2025, Art. 20(1)\u2013(2)",
+              "GAID 2025, Art. 27(1)\u2013(4)"
+            ]
+          }
+        },
+        "o52": {
+          "q": "What does a Nigerian company have to do before relying on legitimate interest?",
+          "gold": [
+            "ng-ndpc-gaid/art-26",
+            "ng-ndpc-gaid/sch-8"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Schedule 8",
+              "GAID 2025, Schedule 8"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Schedule 8",
+              "GAID 2025, Art. 26(1)\u2013(2)",
+              "GAID 2025, Schedule 8"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Schedule 8",
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Art. 26(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Schedule 8",
+              "GAID 2025, Art. 26(1)\u2013(2)",
+              "GAID 2025, Art. 24(1)\u2013(4)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Schedule 8",
+              "GAID 2025, Art. 26(1)\u2013(2)",
+              "GAID 2025, Art. 24(1)\u2013(4)"
+            ]
+          }
+        },
+        "o53": {
+          "q": "How quickly must a data breach be reported to the NDPC?",
+          "gold": [
+            "ng-ndpc-gaid/art-33"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Schedule 2",
+              "GDPR Recital 100"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 33(1)\u2013(5)",
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Art. 39(11)\u2013(13)"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Art. 33(1)\u2013(5)",
+              "GAID 2025, Schedule 4"
+            ]
+          },
+          "rerank": {
+            "rank": 2,
+            "top": [
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Art. 33(1)\u2013(5)",
+              "PECR reg. 5A(1)\u2013(6)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 2,
+            "top": [
+              "GAID 2025, Schedule 2",
+              "GAID 2025, Art. 33(1)\u2013(5)",
+              "GAID 2025, Art. 33(5)"
+            ]
+          }
+        },
+        "o54": {
+          "q": "Do Nigerian websites need permission before setting cookies?",
+          "gold": [
+            "ng-ndpc-gaid/art-19"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GAID 2025, Art. 7(i)\u2013(m)",
+              "GDPR Recital 30"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GAID 2025, Art. 17(7)\u2013(9)",
+              "GAID 2025, Art. 27(1)\u2013(4)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GAID 2025, Art. 1(4)",
+              "GAID 2025, Art. 7(i)\u2013(m)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GAID 2025, Art. 27(1)\u2013(4)",
+              "GAID 2025, Schedule 9"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 19(1)\u2013(8)",
+              "GAID 2025, Art. 27(1)\u2013(4)",
+              "GAID 2025, Schedule 9"
+            ]
+          }
+        },
+        "o55": {
+          "q": "Which companies count as data controllers of major importance in Nigeria?",
+          "gold": [
+            "ng-ndpc-gaid/art-8",
+            "ng-ndpc-gaid/art-9"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "GAID 2025, Schedule 7",
+              "GAID 2025, Art. 8(1)\u2013(3)",
+              "GAID 2025, Art. 8(3)\u2013(5)"
+            ]
+          },
+          "dense": {
+            "rank": 3,
+            "top": [
+              "GAID 2025, Schedule 7",
+              "GAID 2025, Schedule 7(1)\u2013(2)",
+              "GAID 2025, Art. 8(1)\u2013(3)"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "GAID 2025, Schedule 7",
+              "GAID 2025, Art. 8(1)\u2013(3)",
+              "GAID 2025, Schedule 7(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 8(1)\u2013(3)",
+              "GAID 2025, Schedule 7",
+              "GAID 2025, Art. 8(3)\u2013(5)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "GAID 2025, Art. 8(1)\u2013(3)",
+              "GAID 2025, Schedule 7",
+              "GAID 2025, Art. 8(3)\u2013(5)"
+            ]
+          }
+        },
+        "o56": {
+          "q": "Does a company in Nigeria need a data protection officer?",
+          "gold": [
+            "ng-ndpc-gaid/art-11",
+            "ng-ndpc-gaid/art-12"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "15 U.S.C. \u00a7 7706(a)\u2013(b)",
+              "GAID 2025, Art. 2(a)\u2013(30)",
+              "FTC guide"
+            ]
+          },
+          "dense": {
+            "rank": 8,
+            "top": [
+              "GDPR Art. 37(5)\u2013(7)",
+              "GDPR Art. 38(1)\u2013(6)",
+              "GAID 2025, Schedule 2"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Art. 52",
+              "GDPR Art. 37(5)\u2013(7)",
+              "GAID 2025, Art. 1(4)"
+            ]
+          },
+          "rerank": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Schedule 7",
+              "GAID 2025, Art. 52",
+              "GAID 2025, Schedule 2"
+            ]
+          },
+          "rerank_filter": {
+            "rank": null,
+            "top": [
+              "GAID 2025, Schedule 7",
+              "GAID 2025, Art. 52",
+              "GAID 2025, Art. 35(1)\u2013(4)"
+            ]
+          }
+        }
+      },
+      "thresholds": {
+        "refuse_below": -10.48,
+        "weak_below": -2.056
+      },
+      "ran_at": "2026-10-19 22:16 UTC"
+    },
+    {
+      "collection": "lagos-tenancy",
+      "questions": 22,
+      "answerable": 18,
+      "unanswerable": 4,
+      "variants": [
+        {
+          "key": "bm25",
+          "label": "Keyword only (BM25)",
+          "recall@1": 0.778,
+          "recall@3": 0.944,
+          "recall@5": 0.944,
+          "mrr@10": 0.861,
+          "missed": 1,
+          "p50_ms": 0.1,
+          "p95_ms": 0.1
+        },
+        {
+          "key": "dense",
+          "label": "Meaning only (embeddings)",
+          "recall@1": 0.778,
+          "recall@3": 0.833,
+          "recall@5": 0.944,
+          "mrr@10": 0.831,
+          "missed": 1,
+          "p50_ms": 3.9,
+          "p95_ms": 4.2
+        },
+        {
+          "key": "hybrid",
+          "label": "Hybrid (BM25 + embeddings, fused)",
+          "recall@1": 0.778,
+          "recall@3": 0.944,
+          "recall@5": 0.944,
+          "mrr@10": 0.861,
+          "missed": 1,
+          "p50_ms": 4.0,
+          "p95_ms": 4.4
+        },
+        {
+          "key": "rerank",
+          "label": "Hybrid + re-rank",
+          "recall@1": 0.833,
+          "recall@3": 0.944,
+          "recall@5": 0.944,
+          "mrr@10": 0.898,
+          "missed": 0,
+          "p50_ms": 176.0,
+          "p95_ms": 194.8,
+          "refusal_auc": 0.736,
+          "refusal": {
+            "refuse_below": -5.034,
+            "weak_below": -3.851,
+            "test_kept_answerable": 0.889,
+            "test_refused_unanswerable": 0.0,
+            "test_strong_answerable": 0.889,
+            "test_flagged_unanswerable": 0.0
+          }
+        },
+        {
+          "key": "rerank_filter",
+          "label": "Hybrid + re-rank + jurisdiction filter",
+          "recall@1": 0.833,
+          "recall@3": 0.944,
+          "recall@5": 0.944,
+          "mrr@10": 0.898,
+          "missed": 0,
+          "p50_ms": 176.3,
+          "p95_ms": 198.3,
+          "refusal_auc": 0.736,
+          "refusal": {
+            "refuse_below": -5.034,
+            "weak_below": -3.851,
+            "test_kept_answerable": 0.889,
+            "test_refused_unanswerable": 0.0,
+            "test_strong_answerable": 0.889,
+            "test_flagged_unanswerable": 0.0
+          }
+        }
+      ],
+      "per_question": {
+        "l01": {
+          "q": "How much rent in advance can a landlord collect from a new yearly tenant in Lagos?",
+          "gold": [
+            "lagos-tenancy-law/s-4"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 5(1)\u2013(3)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 5(1)\u2013(3)"
+            ]
+          }
+        },
+        "l02": {
+          "q": "Does the Lagos Tenancy Law apply to a flat in Ikoyi?",
+          "gold": [
+            "lagos-tenancy-law/s-1"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 23"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 49",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 49",
+              "Tenancy Law 2011, s. 44(1)\u2013(3)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 3(a)\u2013(c)",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 3(a)\u2013(c)",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          }
+        },
+        "l03": {
+          "q": "How much notice must a landlord give a monthly tenant?",
+          "gold": [
+            "lagos-tenancy-law/s-13"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 14",
+              "Tenancy Law 2011, s. 16"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 17(1)\u2013(2)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 14"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          }
+        },
+        "l04": {
+          "q": "How much notice does a yearly tenant get before the tenancy ends?",
+          "gold": [
+            "lagos-tenancy-law/s-13"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 28(1)\u2013(2)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 14"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 14"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          }
+        },
+        "l05": {
+          "q": "Can a landlord throw a tenant out by force without going to court?",
+          "gold": [
+            "lagos-tenancy-law/s-44"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 44(1)\u2013(3)",
+              "Tenancy Law 2011, s. 46",
+              "Tenancy Law 2011, s. 49"
+            ]
+          },
+          "dense": {
+            "rank": 5,
+            "top": [
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 39",
+              "Tenancy Law 2011, s. 16"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 44(1)\u2013(3)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 44(1)\u2013(3)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 43"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 44(1)\u2013(3)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 43"
+            ]
+          }
+        },
+        "l06": {
+          "q": "Does my landlord have to give me a receipt when I pay rent?",
+          "gold": [
+            "lagos-tenancy-law/s-5"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 5(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 5(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 31"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 5(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 5(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 5(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          }
+        },
+        "l07": {
+          "q": "Who pays the agent or lawyer fees for a tenancy agreement?",
+          "gold": [
+            "lagos-tenancy-law/s-11"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 11",
+              "Tenancy Law 2011, s. 30(1)\u2013(3)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 11",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 30(1)\u2013(3)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 11",
+              "Tenancy Law 2011, s. 30(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 11",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 11",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          }
+        },
+        "l08": {
+          "q": "What can a landlord do if the tenant has abandoned the house?",
+          "gold": [
+            "lagos-tenancy-law/s-15"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 15(1)\u2013(2)",
+              "Tenancy Law 2011, s. 32(1)\u2013(4)",
+              "Tenancy Law 2011, s. 25(1)\u2013(2)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 15(1)\u2013(2)",
+              "Tenancy Law 2011, s. 24",
+              "Tenancy Law 2011, s. 16"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 15(1)\u2013(2)",
+              "Tenancy Law 2011, s. 25(1)\u2013(2)",
+              "Tenancy Law 2011, s. 16"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 15(1)\u2013(2)",
+              "Tenancy Law 2011, s. 24",
+              "Tenancy Law 2011, s. 16"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 15(1)\u2013(2)",
+              "Tenancy Law 2011, s. 24",
+              "Tenancy Law 2011, s. 16"
+            ]
+          }
+        },
+        "l09": {
+          "q": "Can a tenant challenge a rent increase they think is too high?",
+          "gold": [
+            "lagos-tenancy-law/s-37"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 37(1)\u2013(4)",
+              "Tenancy Law 2011, s. 45(1)\u2013(2)",
+              "Tenancy Law 2011, s. 47"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 37(1)\u2013(4)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 37(1)\u2013(4)",
+              "Tenancy Law 2011, s. 45(1)\u2013(2)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 37(1)\u2013(4)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 37(1)\u2013(4)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 4(1)\u2013(5)"
+            ]
+          }
+        },
+        "l10": {
+          "q": "What is the penalty for collecting more advance rent than the law allows?",
+          "gold": [
+            "lagos-tenancy-law/s-4"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 47",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 44(1)\u2013(3)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 44(1)\u2013(3)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 5(1)\u2013(3)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 5(1)\u2013(3)"
+            ]
+          }
+        },
+        "l11": {
+          "q": "Does the law cover student hostels owned by a university?",
+          "gold": [
+            "lagos-tenancy-law/s-1"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 30(1)\u2013(3)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 36",
+              "Tenancy Law 2011, s. 47"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 48",
+              "Tenancy Law 2011, s. 47"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 47",
+              "Tenancy Law 2011, s. 47"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 1(1)\u2013(3)",
+              "Tenancy Law 2011, s. 47",
+              "Tenancy Law 2011, s. 47"
+            ]
+          }
+        },
+        "l12": {
+          "q": "Can a landlord charge a security deposit and service charge?",
+          "gold": [
+            "lagos-tenancy-law/s-10"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 47",
+              "Tenancy Law 2011, s. 34"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 39",
+              "Tenancy Law 2011, s. 31"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 8(i)\u2013(vi)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 8(i)\u2013(vi)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 8(i)\u2013(vi)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          }
+        },
+        "l13": {
+          "q": "What happens after the notice to quit expires and the tenant refuses to leave?",
+          "gold": [
+            "lagos-tenancy-law/s-16"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 24",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 14"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 14",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 14",
+              "Tenancy Law 2011, s. 24"
+            ]
+          },
+          "rerank": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 24",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 24",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)"
+            ]
+          }
+        },
+        "l14": {
+          "q": "If a monthly tenant owes six months of rent, does the tenancy end?",
+          "gold": [
+            "lagos-tenancy-law/s-13"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)"
+            ]
+          },
+          "dense": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 24"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)"
+            ]
+          },
+          "rerank": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 13(1)\u2013(6)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)"
+            ]
+          }
+        },
+        "l15": {
+          "q": "Can landlord and tenant settle their dispute through mediation?",
+          "gold": [
+            "lagos-tenancy-law/s-32",
+            "lagos-tenancy-law/s-30"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 2(1)\u2013(5)",
+              "Tenancy Law 2011, s. 32(1)\u2013(4)",
+              "Tenancy Law 2011, s. 46"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 32(1)\u2013(4)",
+              "Tenancy Law 2011, s. 2(1)\u2013(5)",
+              "Tenancy Law 2011, s. 30(1)\u2013(3)"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 2(1)\u2013(5)",
+              "Tenancy Law 2011, s. 32(1)\u2013(4)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 32(1)\u2013(4)",
+              "Tenancy Law 2011, s. 2(1)\u2013(5)",
+              "Tenancy Law 2011, s. 24"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 32(1)\u2013(4)",
+              "Tenancy Law 2011, s. 2(1)\u2013(5)",
+              "Tenancy Law 2011, s. 24"
+            ]
+          }
+        },
+        "l16": {
+          "q": "Is the landlord allowed to enter my flat whenever they want?",
+          "gold": [
+            "lagos-tenancy-law/s-6"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": null,
+            "top": [
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 31",
+              "Tenancy Law 2011, s. 12(a)\u2013(b)"
+            ]
+          },
+          "dense": {
+            "rank": null,
+            "top": [
+              "Tenancy Law 2011, s. 39",
+              "Tenancy Law 2011, s. 42",
+              "Tenancy Law 2011, s. 12(a)\u2013(b)"
+            ]
+          },
+          "hybrid": {
+            "rank": null,
+            "top": [
+              "Tenancy Law 2011, s. 12(a)\u2013(b)",
+              "Tenancy Law 2011, s. 39",
+              "Tenancy Law 2011, s. 31"
+            ]
+          },
+          "rerank": {
+            "rank": 6,
+            "top": [
+              "Tenancy Law 2011, s. 12(a)\u2013(b)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 47"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 6,
+            "top": [
+              "Tenancy Law 2011, s. 12(a)\u2013(b)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 47"
+            ]
+          }
+        },
+        "l17": {
+          "q": "Can a sitting tenant pay two years' rent upfront if they want to?",
+          "gold": [
+            "lagos-tenancy-law/s-4"
+          ],
+          "split": "dev",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 47",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)"
+            ]
+          },
+          "dense": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)",
+              "Tenancy Law 2011, s. 37(1)\u2013(4)"
+            ]
+          },
+          "hybrid": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 29(1)\u2013(2)",
+              "Tenancy Law 2011, s. 10(a)\u2013(c)"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)",
+              "Tenancy Law 2011, s. 47"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 4(1)\u2013(5)",
+              "Tenancy Law 2011, s. 7(1)\u2013(7)",
+              "Tenancy Law 2011, s. 47"
+            ]
+          }
+        },
+        "l18": {
+          "q": "How should a notice to quit be delivered for a residential property?",
+          "gold": [
+            "lagos-tenancy-law/s-18",
+            "lagos-tenancy-law/s-17"
+          ],
+          "split": "test",
+          "bm25": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 18(a)\u2013(d)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 24"
+            ]
+          },
+          "dense": {
+            "rank": 4,
+            "top": [
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 14",
+              "Tenancy Law 2011, s. 15(1)\u2013(2)"
+            ]
+          },
+          "hybrid": {
+            "rank": 2,
+            "top": [
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 18(a)\u2013(d)",
+              "Tenancy Law 2011, s. 24"
+            ]
+          },
+          "rerank": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 18(a)\u2013(d)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 24"
+            ]
+          },
+          "rerank_filter": {
+            "rank": 1,
+            "top": [
+              "Tenancy Law 2011, s. 18(a)\u2013(d)",
+              "Tenancy Law 2011, s. 16",
+              "Tenancy Law 2011, s. 24"
+            ]
+          }
+        }
+      },
+      "thresholds": {
+        "refuse_below": -5.034,
+        "weak_below": -3.851
+      },
+      "ran_at": "2026-10-19 22:16 UTC"
+    }
+  ]
+}

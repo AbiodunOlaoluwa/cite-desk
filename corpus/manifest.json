@@ -1,0 +1,195 @@
+{
+  "collections": {
+    "outreach": {
+      "title": "Outreach compliance",
+      "blurb": "The rules on cold email, calls, texts and personal data in the US, EU, UK, Canada and Nigeria.",
+      "examples": [
+        "Do I need to include a physical address in a cold sales email to US prospects?",
+        "Can I email a sales pitch to a sole trader in the UK without their consent?",
+        "How quickly do I have to honour an unsubscribe request under CAN-SPAM?",
+        "Can legitimate interest be a lawful basis for direct marketing under the GDPR?",
+        "What hours am I allowed to make telemarketing calls to US residences?",
+        "What is the maximum penalty for sending spam in Canada?"
+      ],
+      "docs": [
+        {
+          "id": "us-canspam-act",
+          "title": "CAN-SPAM Act (15 U.S.C. ch. 103)",
+          "short": "15 U.S.C.",
+          "jurisdiction": "US",
+          "kind": "statute",
+          "url": "https://uscode.house.gov/view.xhtml?path=/prelim@title15/chapter103&edition=prelim",
+          "source": "https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap103.htm",
+          "retrieved": "2026-10-19",
+          "sha256": "cbe12a40f4b3d920419c9690921eb61989670be3823d311cfe06c1aa9b60e170",
+          "licence": "Public domain: a work of the US federal government (17 U.S.C. § 105).",
+          "note": "US Code, 2024 edition, via govinfo.gov.",
+          "provisions": 13,
+          "words": 7300
+        },
+        {
+          "id": "us-canspam-rule",
+          "title": "FTC CAN-SPAM Rule (16 CFR Part 316)",
+          "short": "16 CFR",
+          "jurisdiction": "US",
+          "kind": "regulation",
+          "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-316",
+          "source": "https://www.ecfr.gov/api/versioner/v1/full/2026-10-16/title-16.xml?part=316",
+          "retrieved": "2026-10-19",
+          "sha256": "45bf26b68a06dc81f55388a06eb4e376ceb061a490e3858fb6105143d1d583b0",
+          "licence": "Public domain: a work of the US federal government (17 U.S.C. § 105).",
+          "note": "Electronic Code of Federal Regulations, current.",
+          "provisions": 6,
+          "words": 1552
+        },
+        {
+          "id": "us-ftc-canspam-guide",
+          "title": "CAN-SPAM Act: A Compliance Guide for Business (FTC)",
+          "short": "FTC guide",
+          "jurisdiction": "US",
+          "kind": "guidance",
+          "url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+          "source": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+          "retrieved": "2026-10-19",
+          "sha256": "83587dfb25db80ad0ee58fa4db2fe6564972b4b482aff8b711e574c3318ed467",
+          "licence": "Public domain: a work of the US federal government (17 U.S.C. § 105).",
+          "note": "Plain-English guidance, not the law itself.",
+          "provisions": 18,
+          "words": 2513
+        },
+        {
+          "id": "us-tcpa",
+          "title": "Telephone Consumer Protection Act (47 U.S.C. § 227)",
+          "short": "47 U.S.C.",
+          "jurisdiction": "US",
+          "kind": "statute",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title47-section227&num=0&edition=prelim",
+          "source": "https://www.govinfo.gov/content/pkg/USCODE-2024-title47/html/USCODE-2024-title47-chap5-subchapII-partI-sec227.htm",
+          "retrieved": "2026-10-19",
+          "sha256": "e96c02a3ba56284aa1f96ed1979afc60ebf41c56f228226852613c85a0455cac",
+          "licence": "Public domain: a work of the US federal government (17 U.S.C. § 105).",
+          "note": "US Code, 2024 edition, via govinfo.gov.",
+          "provisions": 1,
+          "words": 6168
+        },
+        {
+          "id": "us-tcpa-rules",
+          "title": "FCC telemarketing and robocall rules (47 CFR § 64.1200)",
+          "short": "47 CFR",
+          "jurisdiction": "US",
+          "kind": "regulation",
+          "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200",
+          "source": "https://www.ecfr.gov/api/versioner/v1/full/2026-10-16/title-47.xml?part=64&section=64.1200",
+          "retrieved": "2026-10-19",
+          "sha256": "4e76b5069cd922d9e85ee7a7666e989066cf0394197ce1616dffc76ad3df9d86",
+          "licence": "Public domain: a work of the US federal government (17 U.S.C. § 105).",
+          "note": "Electronic Code of Federal Regulations, current.",
+          "provisions": 1,
+          "words": 10035
+        },
+        {
+          "id": "eu-gdpr",
+          "title": "General Data Protection Regulation (EU) 2016/679",
+          "short": "GDPR",
+          "jurisdiction": "EU",
+          "kind": "regulation",
+          "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "source": "https://publications.europa.eu/resource/celex/32016R0679",
+          "retrieved": "2026-10-19",
+          "sha256": "962539af03738bf552319ff4ce42d69e5f95a576307c4dfed7bf87e81b646b9d",
+          "licence": "© European Union, https://eur-lex.europa.eu. Reuse authorised under Commission Decision 2011/833/EU. Only the Official Journal edition is authentic.",
+          "note": "Official Journal text, articles and recitals.",
+          "provisions": 272,
+          "words": 52180
+        },
+        {
+          "id": "eu-eprivacy",
+          "title": "ePrivacy Directive 2002/58/EC (consolidated)",
+          "short": "ePrivacy Directive",
+          "jurisdiction": "EU",
+          "kind": "statute",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02002L0058-20091219",
+          "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02002L0058-20091219",
+          "retrieved": "2026-10-19",
+          "sha256": "a6278d9ddd78796710e9f0376b437976f71658dfedc618c379210bdb1f255615",
+          "licence": "© European Union, https://eur-lex.europa.eu. Reuse authorised under Commission Decision 2011/833/EU. Only the Official Journal edition is authentic.",
+          "note": "Consolidated text as of 19 December 2009. Member States implement it in national law.",
+          "provisions": 23,
+          "words": 4659
+        },
+        {
+          "id": "uk-pecr",
+          "title": "Privacy and Electronic Communications Regulations 2003 (SI 2003/2426)",
+          "short": "PECR",
+          "jurisdiction": "UK",
+          "kind": "regulation",
+          "url": "https://www.legislation.gov.uk/uksi/2003/2426/contents",
+          "source": "https://www.legislation.gov.uk/uksi/2003/2426/data.xml",
+          "retrieved": "2026-10-19",
+          "sha256": "d2a586b0cf88e54692877c492c6bbd51f7389d7b1c2ff58a79593aa5b05b33dd",
+          "licence": "Contains public sector information licensed under the Open Government Licence v3.0.",
+          "note": "Latest revised version, including Data (Use and Access) Act 2025 changes in force.",
+          "provisions": 47,
+          "words": 10258
+        },
+        {
+          "id": "ca-casl",
+          "title": "Canada's Anti-Spam Legislation (S.C. 2010, c. 23)",
+          "short": "CASL",
+          "jurisdiction": "CA",
+          "kind": "statute",
+          "url": "https://laws-lois.justice.gc.ca/eng/acts/E-1.6/",
+          "source": "https://laws-lois.justice.gc.ca/eng/XML/E-1.6.xml",
+          "retrieved": "2026-10-19",
+          "sha256": "2c001e6e198c88e80e3ae62ae486bc7f94683152e2605a8877d8a019b1af2c87",
+          "licence": "Reproduced under the Reproduction of Federal Law Order (SI/97-5). This is not the official version; the official version is published on the Justice Laws Website.",
+          "note": "",
+          "provisions": 60,
+          "words": 11756
+        },
+        {
+          "id": "ng-ndpc-gaid",
+          "title": "NDP Act General Application and Implementation Directive (GAID) 2025",
+          "short": "GAID 2025",
+          "jurisdiction": "NG",
+          "kind": "regulation",
+          "url": "https://ndpc.gov.ng/",
+          "source": "https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf",
+          "retrieved": "2026-10-19",
+          "sha256": "e4359e90c9a11cd772f9605c797d6f36af000c58a27bfba251fa37a89824cc5a",
+          "licence": "Official publication of the Nigeria Data Protection Commission, reproduced for reference with attribution.",
+          "note": "Issued by the NDPC under the Nigeria Data Protection Act 2023. The Act itself is not in this collection.",
+          "provisions": 62,
+          "words": 28520
+        }
+      ]
+    },
+    "lagos-tenancy": {
+      "title": "Lagos tenancy",
+      "blurb": "The Tenancy Law of Lagos State 2011: rent in advance, notices to quit, recovery of premises.",
+      "examples": [
+        "How much rent in advance can a landlord collect from a new yearly tenant in Lagos?",
+        "Does the Lagos Tenancy Law apply to a flat in Ikoyi?",
+        "How much notice must a landlord give a monthly tenant?",
+        "Can a landlord lock a tenant out without going to court?"
+      ],
+      "docs": [
+        {
+          "id": "lagos-tenancy-law",
+          "title": "Tenancy Law of Lagos State 2011 (Law No. 14 of 2011)",
+          "short": "Tenancy Law 2011",
+          "jurisdiction": "NG-LA",
+          "kind": "statute",
+          "url": "https://lagosministryofjustice.org/",
+          "source": "https://lagosministryofjustice.org/wp-content/uploads/2022/01/Tenancy-Law-2011.pdf",
+          "retrieved": "2026-10-19",
+          "sha256": "73a3bad534690771e545b89ba7d78252f51734b4fc08bb6438d45cf77c48ccd7",
+          "licence": "Lagos State Official Gazette No. 37, Vol. 44 (26 August 2011), as published by the Lagos State Ministry of Justice. Reproduced for reference.",
+          "note": "Listed as under review by the Lagos State Law Reform Commission.",
+          "provisions": 49,
+          "words": 5337
+        }
+      ]
+    }
+  }
+}

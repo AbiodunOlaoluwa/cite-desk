@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cite Desk</title>
+  <meta name="description" content="Ask the law, get the paragraph it came from. Retrieval over official texts with hybrid search, re-ranking and cite-or-refuse answers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="#ask" aria-label="Cite Desk home">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="var(--ink)"/>
+          <path d="M9 6.5H7v11h2M15 6.5h2v11h-2" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="1.9" fill="var(--green-bright)"/>
+        </svg>
+        <span class="brand-name">Cite Desk</span>
+      </a>
+      <span class="mode" id="mode">…</span>
+      <nav class="tabs" aria-label="Sections">
+        <a href="#ask" data-tab="ask">Ask</a>
+        <a href="#hood" data-tab="hood">Under the hood</a>
+        <a href="#corpus" data-tab="corpus">Corpus</a>
+        <a href="#evals" data-tab="evals">Evals</a>
+      </nav>
+    </div>
+    <div class="topbar-right">
+      <div class="segmented colpick" id="colpick" role="group" aria-label="Collection"></div>
+    </div>
+  </header>
+  <main id="view" tabindex="-1"></main>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

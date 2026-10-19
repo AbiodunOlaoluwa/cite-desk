@@ -1,0 +1,10 @@
+{
+  "outreach": {
+    "refuse_below": -10.48,
+    "weak_below": -2.056
+  },
+  "lagos-tenancy": {
+    "refuse_below": -5.034,
+    "weak_below": -3.851
+  }
+}

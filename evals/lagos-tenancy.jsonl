@@ -1,0 +1,22 @@
+{"id": "l01", "q": "How much rent in advance can a landlord collect from a new yearly tenant in Lagos?", "gold": ["lagos-tenancy-law/s-4"], "answerable": true, "split": "dev", "note": "s 4(3): not more than one year"}
+{"id": "l02", "q": "Does the Lagos Tenancy Law apply to a flat in Ikoyi?", "gold": ["lagos-tenancy-law/s-1"], "answerable": true, "split": "test", "note": "s 1(3) exempt areas"}
+{"id": "l03", "q": "How much notice must a landlord give a monthly tenant?", "gold": ["lagos-tenancy-law/s-13"], "answerable": true, "split": "dev", "note": "one month"}
+{"id": "l04", "q": "How much notice does a yearly tenant get before the tenancy ends?", "gold": ["lagos-tenancy-law/s-13"], "answerable": true, "split": "test", "note": "six months"}
+{"id": "l05", "q": "Can a landlord throw a tenant out by force without going to court?", "gold": ["lagos-tenancy-law/s-44"], "answerable": true, "split": "dev", "note": "offence"}
+{"id": "l06", "q": "Does my landlord have to give me a receipt when I pay rent?", "gold": ["lagos-tenancy-law/s-5"], "answerable": true, "split": "test", "note": "receipt"}
+{"id": "l07", "q": "Who pays the agent or lawyer fees for a tenancy agreement?", "gold": ["lagos-tenancy-law/s-11"], "answerable": true, "split": "dev", "note": "the party who engages them"}
+{"id": "l08", "q": "What can a landlord do if the tenant has abandoned the house?", "gold": ["lagos-tenancy-law/s-15"], "answerable": true, "split": "test", "note": "abandoned premises"}
+{"id": "l09", "q": "Can a tenant challenge a rent increase they think is too high?", "gold": ["lagos-tenancy-law/s-37"], "answerable": true, "split": "dev", "note": "unreasonable increase"}
+{"id": "l10", "q": "What is the penalty for collecting more advance rent than the law allows?", "gold": ["lagos-tenancy-law/s-4"], "answerable": true, "split": "test", "note": "N100,000 or 3 months"}
+{"id": "l11", "q": "Does the law cover student hostels owned by a university?", "gold": ["lagos-tenancy-law/s-1"], "answerable": true, "split": "dev", "note": "s 1(2)(a)"}
+{"id": "l12", "q": "Can a landlord charge a security deposit and service charge?", "gold": ["lagos-tenancy-law/s-10"], "answerable": true, "split": "test", "note": "deposits and service charge"}
+{"id": "l13", "q": "What happens after the notice to quit expires and the tenant refuses to leave?", "gold": ["lagos-tenancy-law/s-16"], "answerable": true, "split": "dev", "note": "seven days' notice of owner's intention"}
+{"id": "l14", "q": "If a monthly tenant owes six months of rent, does the tenancy end?", "gold": ["lagos-tenancy-law/s-13"], "answerable": true, "split": "test", "note": "s 13(2)"}
+{"id": "l15", "q": "Can landlord and tenant settle their dispute through mediation?", "gold": ["lagos-tenancy-law/s-32", "lagos-tenancy-law/s-30"], "answerable": true, "split": "dev", "note": "mediation and arbitration"}
+{"id": "l16", "q": "Is the landlord allowed to enter my flat whenever they want?", "gold": ["lagos-tenancy-law/s-6"], "answerable": true, "split": "test", "note": "quiet enjoyment, privacy"}
+{"id": "l17", "q": "Can a sitting tenant pay two years' rent upfront if they want to?", "gold": ["lagos-tenancy-law/s-4"], "answerable": true, "split": "dev", "note": "s 4(2)"}
+{"id": "l18", "q": "How should a notice to quit be delivered for a residential property?", "gold": ["lagos-tenancy-law/s-18", "lagos-tenancy-law/s-17"], "answerable": true, "split": "test", "note": "service of notice"}
+{"id": "lu01", "q": "What are the rules for running Airbnb short-lets in Lagos?", "gold": [], "answerable": false, "split": "dev", "note": "not in the law"}
+{"id": "lu02", "q": "How do I register a land title in Lagos?", "gold": [], "answerable": false, "split": "test", "note": "not in this collection"}
+{"id": "lu03", "q": "What is the land use charge rate for a house in Lekki?", "gold": [], "answerable": false, "split": "dev", "note": "not in this collection"}
+{"id": "lu04", "q": "What does tenancy law in Abuja say about notice to quit?", "gold": [], "answerable": false, "split": "test", "note": "Abuja not covered"}

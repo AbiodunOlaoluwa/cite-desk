@@ -1,0 +1,17 @@
+# Render blueprint: one free web service. The build downloads the two small ONNX models and builds the
+# search indexes, so the running service never needs the network to search.
+services:
+  - type: web
+    name: cite-desk
+    runtime: python
+    plan: free
+    buildCommand: pip install uv && uv sync --frozen --no-dev && uv run python -m cite_desk index
+    startCommand: uv run --no-dev python -m cite_desk serve --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/meta
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: CITE_DESK_THREADS
+        value: "1"
+      # To answer with Claude instead of quoting: set CITE_DESK_MODE=anthropic and ANTHROPIC_API_KEY.
+      # CITE_DESK_DAILY_CAP and CITE_DESK_PER_IP_HOURLY limit spend.

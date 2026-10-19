@@ -100,10 +100,11 @@ def _cite_label(hit: dict, refs: list[str]) -> str:
 
 
 def answer_claude(question: str, hits: list[dict], collection: str, client=None) -> Answer:
-    import anthropic
-
     col = manifest()["collections"][collection]
-    client = client or anthropic.Anthropic()
+    if client is None:
+        import anthropic
+
+        client = anthropic.Anthropic()
     results, unit_index = [], []
     for h in hits:
         units = _units(h)

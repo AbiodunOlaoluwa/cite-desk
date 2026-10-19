@@ -234,6 +234,7 @@ name = "cite-desk"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "anthropic" },
     { name = "beautifulsoup4" },
     { name = "fastapi" },
     { name = "fastembed" },
@@ -241,11 +242,6 @@ dependencies = [
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "uvicorn" },
-]
-
-[package.optional-dependencies]
-llm = [
-    { name = "anthropic" },
 ]
 
 [package.dev-dependencies]
@@ -256,7 +252,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "anthropic", marker = "extra == 'llm'", specifier = ">=0.80" },
+    { name = "anthropic", specifier = ">=0.80" },
     { name = "beautifulsoup4", specifier = ">=4.12" },
     { name = "fastapi", specifier = ">=0.115" },
     { name = "fastembed", specifier = ">=0.5" },
@@ -264,7 +260,6 @@ requires-dist = [
     { name = "numpy", specifier = ">=1.26" },
     { name = "uvicorn", specifier = ">=0.30" },
 ]
-provides-extras = ["llm"]
 
 [package.metadata.requires-dev]
 dev = [

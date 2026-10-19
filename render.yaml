@@ -13,5 +13,11 @@ services:
         value: "3.12.7"
       - key: CITE_DESK_THREADS
         value: "1"
+      # The free instance has a fraction of a CPU: the re-ranker reads fewer, shorter passages here
+      # (10 x 120 words instead of 24 x 300). Measured on the eval set: top-5 recall 86% instead of 89%.
+      - key: CITE_DESK_RERANK_POOL
+        value: "10"
+      - key: CITE_DESK_RERANK_WORDS
+        value: "120"
       # To answer with Claude instead of quoting: set CITE_DESK_MODE=anthropic and ANTHROPIC_API_KEY.
       # CITE_DESK_DAILY_CAP and CITE_DESK_PER_IP_HOURLY limit spend.

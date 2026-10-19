@@ -2,6 +2,8 @@
 
 [![test](https://github.com/AbiodunOlaoluwa/cite-desk/actions/workflows/test.yml/badge.svg)](https://github.com/AbiodunOlaoluwa/cite-desk/actions/workflows/test.yml)
 
+**Try it live: https://cite-desk.onrender.com**
+
 Ask a question about the law and get the paragraph it came from, or a plain "these documents don't cover that". Retrieval-augmented generation over real, official legal texts, with hybrid search, re-ranking, paragraph-level citations, a refusal gate, and evals that show what each stage adds.
 
 Two collections ship with it:
@@ -104,7 +106,7 @@ uv run pytest                          # 34 tests, using tiny stand-in models (n
 | `CITE_DESK_THREADS` | all cores | ONNX threads (1 on small hosts) |
 | `CITE_DESK_RERANK_POOL` / `CITE_DESK_RERANK_WORDS` | 24 / 300 | how many passages the re-ranker reads, and how much of each |
 
-`render.yaml` deploys it to a free Render web service: the build step downloads the models and builds the indexes.
+**Live demo:** https://cite-desk.onrender.com (Render's free tier: the first visit after a quiet spell takes up to a minute to wake). The hosted copy has a fraction of a CPU, so its re-ranker reads 10 passages of 120 words instead of 24 of 300; on the eval set that keeps the right provision in the top 5 for 86% of questions instead of 89%. `render.yaml` holds those settings: the build step downloads the models and builds the indexes.
 
 Not legal advice. The texts are as published by their official sources on the retrieval date shown in the app.
 

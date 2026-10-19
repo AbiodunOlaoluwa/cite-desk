@@ -162,6 +162,7 @@ class Retriever:
         trace["abstain"] = {"top_score": top, "refuse_below": s.refuse_below, "weak_below": s.weak_below,
                             "abstain": abstain, "weak": weak}
         trace["ms"] = {k: round(v * 1000, 2) for k, v in t.items()}
+        trace["rerank_pool"], trace["rerank_words"] = RERANK_POOL, RERANK_WORDS
         return Result(q, hits, trace, abstain, weak)
 
     def _passage(self, rowid: int) -> str:

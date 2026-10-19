@@ -238,7 +238,7 @@ function renderHood(view) {
     { n: 2, h: "Keyword search", p: "BM25 over every passage, title weighted double", ms: ms.bm25, skip: !("bm25" in ms) },
     { n: 3, h: "Meaning search", p: "The question as a vector, compared with all passages", ms: ms.dense, skip: !("dense" in ms) },
     { n: 4, h: "Fuse", p: "Reciprocal rank fusion: agreement between the two lists wins", ms: ms.fuse, skip: !("fuse" in ms) },
-    { n: 5, h: "Re-rank", p: "A cross-encoder reads the question with each of the top 24", ms: ms.rerank, skip: !("rerank" in ms) },
+    { n: 5, h: "Re-rank", p: `A cross-encoder reads the question with each of the top ${t.rerank_pool || 24}`, ms: ms.rerank, skip: !("rerank" in ms) },
     { n: 6, h: "Answer or refuse", p: gate.refuse_below == null || !("rerank" in ms) ? "Only judged after re-ranking" : `Best ${gate.top_score?.toFixed(2)}; refuse below ${gate.refuse_below.toFixed(2)}, weak below ${gate.weak_below.toFixed(2)}`, ms: null, held: gate.abstain || gate.weak, verdict: gate.abstain ? "refuse" : gate.weak ? "weak match" : "answer" },
   ];
   const fusedRank = Object.fromEntries((t.fused || []).map((x, i) => [x.id, i + 1]));

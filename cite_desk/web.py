@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse, StreamingResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -70,6 +70,12 @@ def _search(body: Ask) -> dict:
 @app.get("/", response_class=HTMLResponse)
 def index():
     return (STATIC / "index.html").read_text()
+
+
+@app.get("/.well-known/rework-proof.txt", response_class=PlainTextResponse)
+def rework_proof():
+    """Lets REWORKIO confirm this deployment is mine."""
+    return "rework-verify-2a6ef0148ed6889484b5\n"
 
 
 @app.get("/api/meta")
